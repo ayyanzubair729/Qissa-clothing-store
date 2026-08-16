@@ -58,8 +58,25 @@ function findBestProductMatch(catalogTitle, products) {
   return null;
 }
 
+export async function getProductById(id) {
+  try {
+    const { data } = await api.get(`/products/${id}`);
+    return data.data || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function findBackendProduct(title) {
+  if (typeof title === 'string' && /^[0-9a-fA-F]{24}$/.test(title)) {
+    const byId = await getProductById(title);
+    if (byId) return byId;
+  }
   const products = await getAllBackendProducts();
+  if (typeof title === 'string' && /^[0-9a-fA-F]{24}$/.test(title)) {
+    const byId = products.find(p => (p._id || '').toString() === title);
+    if (byId) return byId;
+  }
   return findBestProductMatch(title, products) || null;
 }
 

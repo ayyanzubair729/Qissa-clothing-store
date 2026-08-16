@@ -208,3 +208,120 @@ export const deleteProduct = async (req, res) => {
     });
   }
 };
+
+export const getTrendingDeals = async (req, res) => {
+  try {
+    const pipeline = [
+      { $match: { isActive: true, discountPrice: { $gt: 0 } } },
+      {
+        $addFields: {
+          discountPercentage: {
+            $round: [
+              {
+                $multiply: [
+                  { $divide: [{ $subtract: ["$price", "$discountPrice"] }, "$price"] },
+                  100,
+                ],
+              },
+            ],
+          },
+        },
+      },
+      { $match: { discountPercentage: { $gte: 50 } } },
+      { $match: { "variants.stock": { $gt: 0 } } },
+      { $sort: { discountPercentage: -1 } },
+      { $limit: 6 },
+    ];
+
+    let products = await Product.aggregate(pipeline);
+
+    if (products.length === 0) {
+      products = await Product.aggregate([
+        { $match: { isActive: true, discountPrice: { $gt: 0 } } },
+        {
+          $addFields: {
+            discountPercentage: {
+              $round: [
+                {
+                  $multiply: [
+                    { $divide: [{ $subtract: ["$price", "$discountPrice"] }, "$price"] },
+                    100,
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        { $match: { "variants.stock": { $gt: 0 } } },
+        { $sort: { discountPercentage: -1 } },
+        { $limit: 6 },
+      ]);
+    }
+
+    res.status(200).json({
+      success: true,
+      data: products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const updateProductStock = async (req, res) => {
+  try {
+    const { variantIndex, stock } = req.body;
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ success: false, message: "Product not found." });
+    }
+
+    if (!product.variants || !product.variants[variantIndex]) {
+      return res.status(400).json({ success: false, message: "Variant not found." });
+    }
+
+    product.variants[variantIndex].stock = stock;
+    await product.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Stock updated successfully.",
+      data: product,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const toggleProductStatus = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found.",
+      });
+    }
+
+    product.isActive = !product.isActive;
+    await product.save();
+
+    res.status(200).json({
+      success: true,
+      message: `Product ${product.isActive ? "activated" : "deactivated"} successfully.`,
+      data: product,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

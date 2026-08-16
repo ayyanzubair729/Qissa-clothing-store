@@ -55,8 +55,9 @@ export default function ProductCard({ product }) {
 
   const isOutOfStock = stock === 0;
   const isLowStock = stock > 0 && stock <= 3;
+  const isJewelry = product.categoryKey === 'jewelry';
   const primaryImage = images?.[0] || 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80';
-  const secondaryImage = images?.[1] || primaryImage;
+  const secondaryImage = isJewelry ? primaryImage : (images?.[1] || primaryImage);
 
   const loadSizeStock = useCallback(async () => {
     try {

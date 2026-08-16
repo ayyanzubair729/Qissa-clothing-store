@@ -1,3 +1,33 @@
+const clothesModules = import.meta.glob('../assets/images/clothes/**/*.{webp,jpg,jpeg,png,avif}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+const clothesImages = {};
+for (const [filePath, url] of Object.entries(clothesModules)) {
+  const match = filePath.replace(/\\/g, '/').match(/clothes\/(.+?)\/(.+)$/);
+  if (!match) continue;
+  const folder = match[1];
+  if (!clothesImages[folder]) clothesImages[folder] = [];
+  clothesImages[folder].push(url);
+}
+
+const trendingModules = import.meta.glob('../assets/images/trending/**/*.{webp,jpg,jpeg,png,avif}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+const trendingImages = {};
+for (const [filePath, url] of Object.entries(trendingModules)) {
+  const match = filePath.replace(/\\/g, '/').match(/trending\/(.+?)\/(.+)$/);
+  if (!match) continue;
+  const folder = match[1];
+  if (!trendingImages[folder]) trendingImages[folder] = [];
+  trendingImages[folder].push(url);
+}
+
 const folderMap = {
   'fsp1365-purple': 'printed-lawn-3pc-purple',
   'fse719-yellow': 'embroidered-chiffon-3pc-yellow',
@@ -6,24 +36,29 @@ const folderMap = {
   'fse710-purple': 'embroidered-chiffon',
   'fsp1354-pret-black': 'pret-embroidered',
   'fsp1330-pret-black': 'pret-embroidered',
-  'fsp1294-pret-black': 'pret-embroidered',
+  'fsp1294-pret-black': 'pret-embroidered-2pc',
   'fsp729-pret-blue': 'pret-printed-2pc',
-  'fse703-green': 'printed-lawn-3pc',
-  'fsp1321-charcoal': 'printed-lawn-3pc',
+  'fse703-green': 'embroidered-chiffon',
+  'fsp1321-charcoal': 'pret-printed-2pc',
   'fse515-green': 'printed-lawn-3pc',
   'fse608-navy': 'embroidered-slub-khaddar-3pc',
-  'fsp1397-white': 'pret-embroidered',
-  'fsp1402-white': 'printed-lawn-3pc',
-  'fsp1072-black': 'printed-lawn-3pc',
+  'fsp1397-white': 'printed-lawn-3pc',
+  'fsp1402-white': 'pret-jacquard',
+  'fsp1072-black': 'red-printed-two-piece',
   'fse697-white': 'embroidered-chiffon',
   'fsp1002-black': 'printed-lawn-3pc',
   'fsp943-orange': 'printed-lawn-3pc',
-  'fsp1193-maroon': 'printed-lawn-3pc',
+  'bottoms-palazzo-2': 'printed-lawn-3pc',
   'fsp1176-rust': 'printed-lawn-3pc',
   'style-shawl': 'luxury-organza-shawl',
   'style-earrings': 'ivory-drop-earrings',
   'style-khussa': 'classic-embroidered-khussa',
   'pret-embroidered-2pc': 'pret-embroidered-2pc',
+  'bottoms-trouser-1': 'bottoms-trouser-1',
+  'bottoms-palazzo-1': 'bottoms-palazzo-1',
+  'jewelry-earrings-1': 'jewelry-earrings-1',
+  'jewelry-necklace-1': 'jewelry-necklace-1',
+  'jewelry-bangle-1': 'jewelry-bangle-1',
 };
 
 export function getProductFolder(id) {
@@ -37,7 +72,26 @@ const imageCount = {
   'pret-embroidered-2pc': 3,
 };
 
+const trendingFolderMap = {
+  'fsp1002-black': 'Printed Linen 2 Pcs (Unstitched)',
+};
+
+const clothesFolderMap = {
+  'fsp943-orange': 'Printed Slub Khaddar 3 Pcs',
+  'fse703-green': 'Embroidered Lawn 3 Pcs (Unstitched)',
+};
+
 export function getProductImages(id) {
+  const trendingFolder = trendingFolderMap[id];
+  if (trendingFolder && trendingImages[trendingFolder]) {
+    return trendingImages[trendingFolder];
+  }
+
+  const clothesFolder = clothesFolderMap[id];
+  if (clothesFolder && clothesImages[clothesFolder]) {
+    return clothesImages[clothesFolder];
+  }
+
   const folder = getProductFolder(id);
   if (!folder) return null;
   const count = imageCount[id] || 3;

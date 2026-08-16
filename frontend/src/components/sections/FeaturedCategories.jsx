@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import shawlCover from '../../assets/images/shawl.webp';
+import bottomsCover from '../../assets/images/bottoms.webp';
+import jewelryCover from '../../assets/images/jewellery.mp4';
 import './sections.css';
 
 const fadeUp = {
@@ -38,6 +41,25 @@ const categories = [
     subtitle: 'Embellished edits for occasions',
     image: '/assets/images/formal.webp',
   },
+  {
+    key: 'shawls',
+    title: 'Shawls',
+    subtitle: 'Seasonal shawls and statement drape layers',
+    image: shawlCover,
+  },
+  {
+    key: 'bottoms',
+    title: 'Bottoms',
+    subtitle: 'Essential bottoms for every wardrobe',
+    image: bottomsCover,
+  },
+  {
+    key: 'jewelry',
+    title: 'Jewelry',
+    subtitle: 'Finishing touches for your ensemble',
+    image: jewelryCover,
+    video: true,
+  },
 ];
 
 export default function FeaturedCategories() {
@@ -69,7 +91,13 @@ export default function FeaturedCategories() {
             >
               <Link to={`/category/${cat.key}`} className="featured-card-link">
                 <div className="featured-card-image">
-                  <img src={cat.image} alt={cat.title} loading="lazy" />
+                  {cat.video ? (
+                    <video autoPlay muted loop playsInline>
+                      <source src={cat.image} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img src={cat.image} alt={cat.title} loading="lazy" />
+                  )}
                 </div>
                 <div className="featured-card-overlay" />
                 <div className="featured-card-content">

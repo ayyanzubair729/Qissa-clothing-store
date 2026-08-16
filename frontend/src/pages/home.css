@@ -157,6 +157,15 @@
   }
 }
 
+/* ─── Trending Section ─── */
+.trending-section {
+  background: #ffffff;
+}
+
+.trending-section .product-grid {
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 760px) {
   .hero-content {
     padding-bottom: 1.2rem;

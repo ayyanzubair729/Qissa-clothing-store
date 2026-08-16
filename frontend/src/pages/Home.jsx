@@ -35,7 +35,16 @@ const heroReveal = {
 };
 
 export default function Home() {
-  const bestSellers = catalogProducts.filter((p) => !p.isNew).slice(0, 8);
+  const bestSellers = catalogProducts
+    .filter((p) => !p.isNew)
+    .map((p) => ({
+      ...p,
+      discountPercent: p.originalPrice
+        ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100)
+        : 0,
+    }))
+    .sort((a, b) => b.discountPercent - a.discountPercent)
+    .slice(0, 8);
 
   return (
     <div className="home-page">
@@ -60,12 +69,6 @@ export default function Home() {
 
       {/* ─── Featured Categories ─── */}
       <FeaturedCategories />
-
-      {/* ─── New Arrivals ─── */}
-      <NewArrivals />
-
-      {/* ─── Editorial Banner ─── */}
-      <EditorialBanner />
 
       {/* ─── Best Sellers ─── */}
       <section className="section-space">
@@ -105,6 +108,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ─── New Arrivals ─── */}
+      <NewArrivals />
+
+      {/* ─── Editorial Banner ─── */}
+      <EditorialBanner />
 
       {/* ─── Shop by Fabric ─── */}
       <ShopByFabric />

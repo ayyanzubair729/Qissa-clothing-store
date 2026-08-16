@@ -56,17 +56,18 @@
 }
 
 .badge {
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: #fff;
-  padding: 0.3rem 0.45rem;
-  border-radius: 0.35rem;
-  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 800;
 }
 
 .badge-sale {
-  background: #a73d35;
+  background: #8b1e1e;
+  box-shadow: 0 2px 8px rgba(139,30,30,0.3);
 }
 
 .badge-out {

@@ -172,16 +172,48 @@ export default function ProductDetail() {
   const [backendProduct, setBackendProduct] = useState(null);
   const [variantMap, setVariantMap] = useState({});
   const [notifyModalOpen, setNotifyModalOpen] = useState(false);
+  const [product, setProduct] = useState(null);
+  const [productLoading, setProductLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 400);
     return () => clearTimeout(timer);
   }, []);
 
-  const product = useMemo(
-    () => catalogProducts.find((p) => p.id === id) || null,
-    [id],
-  );
+  useEffect(() => {
+    setProduct(null);
+    setProductLoading(true);
+    const catalogProduct = catalogProducts.find((p) => p.id === id);
+    if (catalogProduct) {
+      setProduct(catalogProduct);
+      setProductLoading(false);
+      return;
+    }
+    if (/^[0-9a-fA-F]{24}$/.test(id)) {
+      findBackendProduct(id).then((bp) => {
+        if (bp) {
+          setProduct({
+            id: bp._id || id,
+            title: bp.name,
+            categoryKey: (bp.subCategory || bp.category || '').toLowerCase().replace(/\s+/g, '-'),
+            fabric: bp.fabric || '',
+            pieces: '',
+            stitchedType: bp.subCategory || 'Ready to Wear',
+            color: (bp.colors && bp.colors.length > 0) ? bp.colors[0] : '',
+            price: bp.discountPrice || bp.price,
+            originalPrice: bp.price,
+            stock: bp.stock || 0,
+            isNew: bp.isNewArrival || false,
+            images: (bp.images || []).map((img) => img.url || img),
+            variants: bp.variants || [],
+          });
+        }
+        setProductLoading(false);
+      });
+    } else {
+      setProductLoading(false);
+    }
+  }, [id]);
 
   const colorVariants = useMemo(() => {
     if (!product) return [];
@@ -377,6 +409,14 @@ export default function ProductDetail() {
       }
     }
   }, [token, product, backendProduct, dispatch, navigate]);
+
+  if (productLoading) {
+    return (
+      <motion.section className="container pdp-shell" {...pageTransition}>
+        <SkeletonPdp />
+      </motion.section>
+    );
+  }
 
   if (!product) {
     return (

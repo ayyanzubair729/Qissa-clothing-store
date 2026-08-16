@@ -71,8 +71,8 @@ const catalogProducts = [
     fabric: "Lawn",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/embroidered-chiffon/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/embroidered-chiffon/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "Green", size: "S", stock: 7 },
@@ -127,8 +127,8 @@ const catalogProducts = [
     fabric: "Poly Chiffon",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/pret-jacquard/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/pret-jacquard/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "White", size: "S", stock: 11 },
@@ -183,8 +183,8 @@ const catalogProducts = [
     fabric: "Lawn",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/pret-embroidered/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/pret-embroidered/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/pret-embroidered-2pc/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/pret-embroidered-2pc/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "Black", size: "S", stock: 2 },
@@ -239,8 +239,8 @@ const catalogProducts = [
     fabric: "Lawn",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/pret-printed-2pc/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/pret-printed-2pc/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "Charcoal", size: "S", stock: 10 },
@@ -295,8 +295,8 @@ const catalogProducts = [
     fabric: "Cambric",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/red-printed-two-piece/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/red-printed-two-piece/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "Black", size: "S", stock: 1 },
@@ -501,8 +501,8 @@ const catalogProducts = [
     fabric: "Organza",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/embroidered-lawn-shawl-black/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/embroidered-lawn-shawl-black/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/luxury-organza-shawl/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/luxury-organza-shawl/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "Ivory", size: "Standard", stock: 50 }
@@ -525,8 +525,7 @@ const catalogProducts = [
     fabric: "Metal",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/ivory-drop-earrings/IMG1.webp", alt: "Front View" }
     ],
     variants: [
       { color: "Gold", size: "Standard", stock: 70 }
@@ -549,8 +548,8 @@ const catalogProducts = [
     fabric: "Leather",
     brand: "Qissa",
     images: [
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG1.webp", alt: "Front View" },
-      { url: "/assets/images/clothes/printed-lawn-3pc/IMG2.webp", alt: "Back View" }
+      { url: "/assets/images/clothes/classic-embroidered-khussa/IMG1.webp", alt: "Front View" },
+      { url: "/assets/images/clothes/classic-embroidered-khussa/IMG2.webp", alt: "Back View" }
     ],
     variants: [
       { color: "Brown", size: "36", stock: 10 },

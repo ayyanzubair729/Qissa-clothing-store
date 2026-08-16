@@ -1,9 +1,23 @@
 import { getProductImages } from '../utils/productImages';
+import { getJewelryImage } from '../utils/jewelryImages';
+import { getBottomsImages } from '../utils/bottomsImages';
 
 function buildProduct(base) {
   const local = getProductImages(base.id);
   if (local) {
     base.images = local;
+  }
+  if (base.categoryKey === 'jewelry') {
+    const img = getJewelryImage(base.title);
+    if (img) {
+      base.images = [img];
+    }
+  }
+  if (base.categoryKey === 'bottoms') {
+    const imgs = getBottomsImages(base.title);
+    if (imgs.length > 0) {
+      base.images = imgs;
+    }
   }
   return base;
 }
@@ -262,17 +276,17 @@ const rawProducts = [
     images: [],
   },
   {
-    id: 'fsp1193-maroon',
-    title: 'Printed Slub Khaddar 3 Pcs',
-    categoryKey: 'sale',
-    fabric: 'Khaddar',
-    pieces: '3 PCS',
-    stitchedType: 'Unstitched',
-    color: 'Maroon',
-    price: 5599,
-    originalPrice: 7999,
-    stock: 7,
-    isNew: false,
+    id: 'bottoms-palazzo-2',
+    title: 'Printed Lawn Palazzo',
+    categoryKey: 'bottoms',
+    fabric: 'Lawn',
+    pieces: '1 PCS',
+    stitchedType: 'Stitched',
+    color: 'Green',
+    price: 2199,
+    originalPrice: 2799,
+    stock: 10,
+    isNew: true,
     images: [],
   },
   {
@@ -359,6 +373,76 @@ const rawProducts = [
     isNew: true,
     images: [],
   },
+  {
+    id: 'bottoms-trouser-1',
+    title: 'Straight Cut Cotton Trouser',
+    categoryKey: 'bottoms',
+    fabric: 'Cotton',
+    pieces: '1 PCS',
+    stitchedType: 'Stitched',
+    color: 'Black',
+    price: 2499,
+    originalPrice: 2999,
+    stock: 20,
+    isNew: true,
+    images: [],
+  },
+  {
+    id: 'bottoms-palazzo-1',
+    title: 'Printed Lawn Palazzo',
+    categoryKey: 'bottoms',
+    fabric: 'Lawn',
+    pieces: '1 PCS',
+    stitchedType: 'Stitched',
+    color: 'Blue',
+    price: 1999,
+    originalPrice: 2499,
+    stock: 15,
+    isNew: true,
+    images: [],
+  },
+  {
+    id: 'jewelry-earrings-1',
+    title: 'Gold Plated Drop Earrings',
+    categoryKey: 'jewelry',
+    fabric: 'Gold Finish',
+    pieces: '1 PAIR',
+    stitchedType: 'Accessory',
+    color: 'Gold',
+    price: 1499,
+    originalPrice: 1799,
+    stock: 30,
+    isNew: true,
+    images: [],
+  },
+  {
+    id: 'jewelry-necklace-1',
+    title: 'Pearl & Crystal Necklace Set',
+    categoryKey: 'jewelry',
+    fabric: 'Crystal',
+    pieces: '1 SET',
+    stitchedType: 'Accessory',
+    color: 'Ivory',
+    price: 2999,
+    originalPrice: 3499,
+    stock: 12,
+    isNew: true,
+    images: [],
+  },
+  {
+    id: 'jewelry-bangle-1',
+    title: 'Matte Gold Bangle Set',
+    categoryKey: 'jewelry',
+    fabric: 'Gold Finish',
+    pieces: '1 SET',
+    stitchedType: 'Accessory',
+    color: 'Gold',
+    price: 899,
+    originalPrice: 1199,
+    stock: 45,
+    isNew: false,
+    images: [],
+  },
 ];
 
 export const catalogProducts = rawProducts.map(buildProduct);
@@ -373,4 +457,6 @@ export const categoryConfig = {
   'new-arrivals': { title: 'New Arrivals', subtitle: 'Fresh drops from our latest production cycle' },
   accessories: { title: 'Accessories', subtitle: 'Earrings, handbags, and finishing touches' },
   footwear: { title: 'Footwear', subtitle: 'Embroidered khussas and traditional footwear' },
+  bottoms: { title: 'Bottoms', subtitle: 'Essential bottoms for every wardrobe' },
+  jewelry: { title: 'Jewelry', subtitle: 'Finishing touches for your ensemble' },
 };
