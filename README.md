@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img src="frontend/src/assets/images/logo favicon.png" alt="Qissa" width="40"> Qissa
+# <img src="frontend/src/assets/images/logo favicon.png" alt="Qissa Wear" width="40"> Qissa Wear
 
 ### Premium Pakistani Fashion — E-Commerce Platform
 
