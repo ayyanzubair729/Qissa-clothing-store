@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square)](#contributing)
 
-<img src="frontend/src/assets/images/background.jpg" alt="Qissa Wear Hero" width="100%">
+<video src="frontend/src/assets/images/style with qissa.mp4" autoplay loop muted playsinline width="100%"></video>
 
 </div>
 
@@ -352,21 +352,6 @@ npm run build        # Production build
 npm run lint         # ESLint check
 npm run preview      # Preview production build
 ```
-
----
-
-## Roadmap
-
-- [x] Phase 0 — Foundation
-- [x] Phase 1 — Auth + Core UI
-- [x] Phase 2 — Products + Admin CRUD
-- [x] Phase 3 — Cart + Orders + Payments
-- [x] Phase 4 — Search + UX Polish
-- [x] Phase 5 — Analytics + AI Recommendations
-- [ ] Product reviews & ratings
-- [ ] Email notifications
-- [ ] Advanced search with typo tolerance
-- [ ] Inventory alerts & restocking
 
 ---
 
