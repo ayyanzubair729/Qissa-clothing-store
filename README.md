@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img src="frontend/src/assets/images/logo favicon.png" alt="Qissa" width="40"> Qissa Wear
+# <img src="frontend/src/assets/images/logo favicon.png" alt="Qissa" width="40"> Qissa
 
 ### Premium Pakistani Fashion — E-Commerce Platform
 
@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square)](#contributing)
 
-<img src="frontend/src/assets/images/background.jpg" alt="Qissa Wear Hero" width="100%">
+<img src="frontend/src/assets/images/about 1.webp" alt="Qissa" width="100%">
 
 </div>
 
