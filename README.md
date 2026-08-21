@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square)](#contributing)
 
-<video src="frontend/src/assets/images/style with qissa.mp4" autoplay loop muted playsinline width="100%"></video>
+<img src="frontend/src/assets/images/background.jpg" alt="Qissa Wear Hero" width="100%">
 
 </div>
 
